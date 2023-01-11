@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <style>
+        .button {
+        border-radius: 7px;
+        padding: 10px 15px;
+        text-align: center;
+        background-color: #66CDAA;
+        font-size: 15px;
+        box-shadow: 0px 2px 4px;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1>Task list (<span th:text="${taskCount}">0</span>)</h1>
+<!--        <a th:href="@{/addNewTask}" class="button"> Add Task </a>-->
+        <h2>List:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Task Id</th>
+                    <th>Task name</th>
+                    <th>Due date</th>
+                    <th>Executor name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="taskExecutor : ${ToDoList}" align="center">
+                    <td th:text="${taskExecutor.taskIdDTO}" width="75px"></td>
+                    <td th:text="${taskExecutor.taskName}" width="200px"></td>
+                    <td th:text="${taskExecutor.dueDate}" width="200px"></td>
+                    <td th:text="${taskExecutor.executorName}" width="200px"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p th:text="${forExample}"></p>
+</body>
+</html>
